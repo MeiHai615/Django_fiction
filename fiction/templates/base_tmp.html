@@ -128,7 +128,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p>
-                    ©&nbsp;2018&nbsp;1000phone.com&nbsp;xICP备 by zhougy
+                    ©&nbsp;2018&nbsp;quanwen.com&nbsp;xICP备 by MeiH
                 </p>
             </div>
         </div>
@@ -158,6 +158,18 @@
             location.href = "/art/search?key="+key;
         });
     });
+
+    // ajax 刷新
+    $('.captcha').click(function(){
+        console.log('click');
+         $.getJSON("/captcha/refresh/",
+                  function(result){
+             $('.captcha').attr('src', result['image_url']);
+             $('#id_captcha_0').val(result['key'])
+          });});
+
+
+
 </script>
 {% block js %}{% endblock %}
 

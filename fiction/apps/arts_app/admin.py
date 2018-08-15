@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 import xadmin
-from arts_app.models import ArtsUser
+from arts_app.models import ArtsUser, Art, Tag,Chapter
 from xadmin import views
 
 
@@ -25,6 +25,28 @@ class ArtsUserAdmin():
     list_per_page = 10
 
 
+class ArtAdmin():
+    list_display = ['art_name', 'art_info', 'art_img', 'art_tag', 'art_price', 'art_flag']
+    search_fields = ['art_name', 'art_info', 'art_tag', 'art_price']
+    list_filter = ['art_tag', 'art_price']
+    list_per_page = 20
+
+
+class TagAdmin():
+    list_display = ['tag_name', 'tag_info', 'tag_create_time', 'tag_flag']
+    search_fields = ['tag_name', 'tag_info']
+    list_filter = ['tag_create_time', 'tag_flag']
+    list_per_page = 20
+
+class ChapterAdmin():
+    list_display = ['title', 'content', 'create_time']
+    search_fields = ['title', 'content']
+    list_filter = ['create_time']
+    list_per_page = 50
+
 xadmin.site.register(views.CommAdminView, GlobalSettings)
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(ArtsUser, ArtsUserAdmin)
+xadmin.site.register(Art,ArtAdmin)
+xadmin.site.register(Tag,TagAdmin)
+xadmin.site.register(Chapter, ChapterAdmin)

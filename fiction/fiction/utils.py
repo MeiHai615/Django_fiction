@@ -24,3 +24,12 @@ def flash(request, title, text, level='info'):
     level = LEVEL_MAP[level]
     messages.add_message(request, level, text, title)
     return HttpResponse(text)
+
+
+def cheak_user_login(func):
+    def __wrapper(*args,**kwargs):
+        request = args[0]
+        if  not request.session.has_key('muser'):
+            return HttpResponseRedirect('/art/login')
+        return func(*args,**kwargs)
+    return __wrapper

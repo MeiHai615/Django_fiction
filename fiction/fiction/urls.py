@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 import xadmin
+from arts_app.views import send_message
+
+from captcha import views
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^art/', include('arts_app.urls')),
+    url(r'^captcha/', include('captcha.urls')),
+    url(r'refresh/$', views.captcha_refresh, name='captcha-refresh'),
+    url(r'^send_message/$', send_message, name='send_message'),
 
 ]

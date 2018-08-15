@@ -1,7 +1,0 @@
-six
-future
-httplib2
-django-reversion
-django-formtools
-django-crispy-forms
-django-import-export

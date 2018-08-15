@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import sys
+
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +29,7 @@ SECRET_KEY = 'u8&7!a9c%sdvlzj36mwq6vi8ozs!@)rfny^sq$)=*#3@5$dfx9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -43,12 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
 
 INSTALLED_MYAPPS = [
     'arts_app',
     'xadmin',
     'crispy_forms',
+    'oauth_app',
+
+    'captcha',
 ]
 
 INSTALLED_APPS += INSTALLED_MYAPPS
@@ -91,7 +98,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fiction',
-        'HOST': '10.11.58.96',
+        'HOST': '172.16.22.79',
         'PORT': 3306,
         'USER': 'meihai',
         'PASSWORD': '123456',
@@ -140,7 +147,10 @@ SEX_CHOICES = [
    (0, '男'),
    (1, '女'),
 ]
-
+DB_FIELD_VALID_CHOICES = [
+    (0, '未删除'),
+    (1, '已删除'),
+]
 FLAGS_CHOICES = [
 	(0, '默认'),
     (1, '待删除'),
@@ -157,3 +167,9 @@ PAY_CHOICES = [
     (1, '微信支付'),
     (2, '支付宝支付'),
 ]
+
+QQ_APP_ID = '101491669'
+QQ_KEY = 'e91cd1cfe722c1462e672b7362e313cf'
+QQ_RECALL_URL = 'http://www.meiwen.com/art/qq_check'
+import redis
+r = redis.Redis(host='localhost', port=6379, db=1, decode_responses=True)

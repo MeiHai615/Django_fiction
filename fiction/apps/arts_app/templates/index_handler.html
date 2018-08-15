@@ -67,7 +67,7 @@
                                     class="glyphicon glyphicon-tag"></span>&nbsp;全部</a>
                             {% for tag in tags %}
                             <a class="label label-info" id="curtag{{tag.id}}" href="{{url}}?t={{tag.id}}"><span
-                                    class="glyphicon glyphicon-tag"></span>&nbsp;{{tag.t_name}}</a>
+                                    class="glyphicon glyphicon-tag"></span>&nbsp;{{tag.tag_name}}</a>
                             &nbsp;
                             {% endfor %}
                         </td>
@@ -78,13 +78,13 @@
             <div class="col-md-3">
                 <div class="artlist text-center">
 
-                    <img data-original="/static/{{v.a_img}}" style="width:262px;height:250px;"
-                         class="img-responsive center-block lazy" alt="">
+                    <img src="/static/{{v.art_img}}" style="width:262px;height:250px;"
+                         class="img-responsive center-block lazy" alt="无法加载">
                     <br>
                     <div class="text-left" style="margin-left:auto;margin-right:auto;width:250px;">
-                        <span style="color: #0f0f0f;font-size: 18px; font-weight: bold">{{v.a_title}}</span><br>
+                        <span style="color: #0f0f0f;font-size: 18px; font-weight: bold">{{v.art_name}}</span><br>
                         <br>
-                        <p style="height: 50px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap">{{v.a_info}}</p>
+                        <p style="height: 50px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap">{{v.art_info}}</p>
                     </div>
 
                     <a href="/art/detail?id={{v.id}}" class="btn btn-primary" target="_blank" role="button">
